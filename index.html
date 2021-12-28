@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<div class="col-md-12">
+    <div class="form-group">
+        <label for="Content">Homepage working hour :</label>
+        <button type="button" class="btn btn-primary add_row_button">Add</button>
+        
+      
+         <div class="row clonediv" id="add_row0">
+        	<div class="col-md-4">
+             <input type="text" class="form-control" name="day[]" placeholder="eg:-sunday" >
+            </div>
+            <div class="col-md-4">
+             <input type="text" class="form-control" name="day_meta[]" placeholder="eg:-open" >
+            </div>
+            <div class = "col-md-4">
+            	<button type="button" class="alert alert-danger remove">remove</button>
+            </div>
+        </div>
+      
+
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 	<script>
+
+ 		$(".add_row_button").click(function(){
+ 		// $('.clearitineray').show();
+
+ 		var $div = $('div[id^="add_row"]:last');
+ 		var num = parseInt( $div.prop("id").match(/\d+/g), 10 ) +1;
+ 		var $klon = $div.clone().prop('id', 'add_row'+num );
+		 $div.after( $klon );
+		 $("#add_row"+num).find("input").val('');
+		 // $("#add_row"+num).find("textarea").val('');
+
+		});
+
+
+	</script>
+
+	<script>
+		$("body").on('click','.remove',function(){
+			var id = $(this).closest('.clonediv').attr('id');
+			$('#'+id).remove();
+		});
+	</script>
+
+
